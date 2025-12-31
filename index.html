@@ -2,37 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aura — Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aura</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:#0b0f14; color:#e8eef7;}
-    .wrap { max-width: 720px; margin: 0 auto; padding: 18px; }
-    .top { display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 10px 0 18px; }
-    .brand { font-weight: 800; letter-spacing: .2px; font-size: 22px; }
-    .tag { opacity:.8; font-size: 13px; }
-
-    .card { background:#101826; border:1px solid rgba(255,255,255,.08); border-radius: 18px; overflow:hidden; }
-    #chat { height: 62vh; overflow:auto; padding: 16px; display:flex; flex-direction:column; gap:10px; }
-    .aura, .user {
-      max-width: 84%;
-      padding: 10px 12px;
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0b0f14;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .aura {
+      max-width: 420px;
+      width: 90%;
+      background: #111827;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+    .bubble {
+      background: #1f2937;
+      padding: 14px 16px;
       border-radius: 14px;
-      line-height: 1.25;
-      font-size: 15px;
-      white-space: pre-wrap;
+      margin-bottom: 12px;
+      line-height: 1.4;
     }
-    .aura { background: rgba(120, 170, 255, .12); border:1px solid rgba(120,170,255,.22); align-self:flex-start; }
-    .user { background: rgba(255, 170, 120, .10); border:1px solid rgba(255,170,120,.20); align-self:flex-end; }
-
-    .composer { display:flex; gap:10px; padding: 12px; border-top:1px solid rgba(255,255,255,.08); }
     input {
-      flex:1; padding: 12px 12px; border-radius: 12px; border:1px solid rgba(255,255,255,.12);
-      background:#0c1320; color:#e8eef7; outline:none; font-size: 15px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      margin-top: 12px;
     }
-    button {
-      padding: 12px 14px; border-radius: 12px; border:1px solid rgba(255,255,255,.14);
-      background:#16243a; color:#e8eef7; font-weight:700; cursor:pointer;
+  </style>
+</head>
+<body>
+
+<div class="aura">
+  <div class="bubble">
+    Hi. I’m Aura.  
+    Tell me what you need — I’ll handle the rest.
+  </div>
+
+  <div class="bubble" id="response" style="display:none;"></div>
+
+  <input
+    id="input"
+    placeholder="Try: I want tacos from Jack in the Box"
+    onkeydown="if(event.key==='Enter') respond()"
+  />
+</div>
+
+<script>
+  function respond() {
+    const input = document.getElementById('input');
+    const response = document.getElementById('response');
+    const text = input.value.toLowerCase();
+
+    let reply = "Got it.";
+
+    if (text.includes("taco")) {
+      reply = "Do you want them delivered or picked up from the closest location?";
+    } else if (text.includes("flat tire")) {
+      reply = "I’ve got you. I can call the nearest tire shop or roadside assistance.";
+    } else if (text.includes("milan")) {
+      reply = "Planning Milan. Flights, hotels, food, or experiences?";
+    } else if (text.includes("help")) {
+      reply = "Tell me what’s going on. I’ll take care of it.";
     }
-    .hints { display:flex; flex-wrap:wrap; gap:10px; padding: 14px 12px 0; }
-    .chip {
-      font-size: 13px;
+
+    response.style.display = "block";
+    response.innerText = reply;
+    input.value = "";
+  }
+</script>
+
+</body>
+</html>
