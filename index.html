@@ -2,28 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Aura</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <title>Aura — Demo</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:#0b0f14; color:#e8eef7;}
+    .wrap { max-width: 720px; margin: 0 auto; padding: 18px; }
+    .top { display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 10px 0 18px; }
+    .brand { font-weight: 800; letter-spacing: .2px; font-size: 22px; }
+    .tag { opacity:.8; font-size: 13px; }
 
-<div class="container">
-  <div class="header">Aura</div>
+    .card { background:#101826; border:1px solid rgba(255,255,255,.08); border-radius: 18px; overflow:hidden; }
+    #chat { height: 62vh; overflow:auto; padding: 16px; display:flex; flex-direction:column; gap:10px; }
+    .aura, .user {
+      max-width: 84%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      line-height: 1.25;
+      font-size: 15px;
+      white-space: pre-wrap;
+    }
+    .aura { background: rgba(120, 170, 255, .12); border:1px solid rgba(120,170,255,.22); align-self:flex-start; }
+    .user { background: rgba(255, 170, 120, .10); border:1px solid rgba(255,170,120,.20); align-self:flex-end; }
 
-  <div id="chat" class="chat">
-    <div class="aura">
-      Hi. I’m Aura.  
-      I can help you think, decide, or just get unstuck.
-    </div>
-  </div>
-
-  <div class="input-area">
-    <input id="userInput" placeholder="Say hello…" />
-    <button onclick="send()">Send</button>
-  </div>
-</div>
-
-<script src="aura.js"></script>
-</body>
-</html>
+    .composer { display:flex; gap:10px; padding: 12px; border-top:1px solid rgba(255,255,255,.08); }
+    input {
+      flex:1; padding: 12px 12px; border-radius: 12px; border:1px solid rgba(255,255,255,.12);
+      background:#0c1320; color:#e8eef7; outline:none; font-size: 15px;
+    }
+    button {
+      padding: 12px 14px; border-radius: 12px; border:1px solid rgba(255,255,255,.14);
+      background:#16243a; color:#e8eef7; font-weight:700; cursor:pointer;
+    }
+    .hints { display:flex; flex-wrap:wrap; gap:10px; padding: 14px 12px 0; }
+    .chip {
+      font-size: 13px;
